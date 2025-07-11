@@ -23,7 +23,7 @@ the normal compile+run method specified above works
 
 char is 2 bytes in java
 
-boolean is true or false and here true in not 1 and false is not 0
+boolean is true or false and here true is not 1 and false is not 0
 
 byte b=127;
 int a=12;
@@ -152,6 +152,8 @@ a static method can only be accessed by the class not the object
 also the static method will only have access to static variables
 ex 3.java
 
+if you need access to the other normal object variables you can pass the object as a parameter
+
 main method is static because if it was not we would first need to create an instance of that object and only then the main method could be called but main is the start of execution and this creates a deadlock so main is static which means it does not need an instance to be called
 
 when we have a static variable in our class and we want to initilise it we can use a static block the static block will only run once no matter how many objects are created or how many times the constructor is called
@@ -159,3 +161,65 @@ when the class loading happens first the static block is called
 
 if there is no instance of object created the class loader would never be called hence the class is not loaded into the class loader
 if you want that even without creating a class object the class should be loaded you can do as in 4.java
+
+when creating setters if you have something like this
+
+class Person{
+    int age
+
+    public void setAge(int age){
+        age=age;
+    }
+}
+
+in this case age would be taken as a local variable at it would just be something like age is being reassigned with itself meaning the instance variable remains 0 or whatever its previous value was so we use this.age in such cases and the correct way is
+
+class Person{
+    int age;
+    public void setAge(int age){
+        this.age=age;
+    }
+}
+
+constructors 5.java
+
+we'll follow camel case
+class and interface usually start with capital letters
+variable and methods start with small
+canstants are all capital
+
+class Object{
+
+}
+
+class Main{
+    public static void main(String a[]){
+        Object a; //this will only create a space on stack
+
+        new Object(); // this will only create object on heap this is also called anonymous object
+
+        a=new Object(); // this will create the object on heap and a will start referencing it
+        // meaning stack will have the address to object on heap
+        // this will be called referenced object
+
+        // the use of anonymous objects should be minimised and it can be used when lets say there is some method that needs to be called only once
+    }
+}
+
+the classes in java files can be seperated into different files
+if you compile one .java file it is possible that only one .class file is generated but this means you have only one class in that file and are not using the classes from other files
+if you compile one file and it is using some class from other files the other .class files will be created automatically
+
+inheritance
+class Calc{}
+class AdvancedCalc extends Calc{}
+
+calc     base      subclass    parent
+AdvCalc  derrived  superclass  child
+
+calc -> advCalc single level inheritance
+calc -> advCalc -> veryAdvCalc multi level inheritance
+
+unlike C++ multiple inheritance is not supported in java
+this is mostly because of the ambiguity from same methods in parent classes
+
