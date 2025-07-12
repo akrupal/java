@@ -194,7 +194,7 @@ class Object{
 
 class Main{
     public static void main(String a[]){
-        Object a; //this will only create a space on stack
+        Object a; //this will only create a space on stack to reference some object on heap
 
         new Object(); // this will only create object on heap this is also called anonymous object
 
@@ -202,7 +202,9 @@ class Main{
         // meaning stack will have the address to object on heap
         // this will be called referenced object
 
-        // the use of anonymous objects should be minimised and it can be used when lets say there is some method that needs to be called only once
+        // the use of anonymous objects should be minimised and it can be used when lets say there is some method that needs to be called only once like
+        new Object().doSomethingOnce();
+
     }
 }
 
@@ -223,3 +225,89 @@ calc -> advCalc -> veryAdvCalc multi level inheritance
 unlike C++ multiple inheritance is not supported in java
 this is mostly because of the ambiguity from same methods in parent classes
 
+when new is called it will call the constructor of both the superclass A as well as subclass B
+
+in every constructor by default there is a method called super(); whether it is written or not
+this super is what calls the constructor of the super/parent class
+if you see this super(); will by default call the default constructor
+if you want to call the parametarised constructor you have to pass the parameters with super
+6.java
+
+something to observe from above file is for B its ok A is parent class but what about A
+even its constructor will call super but its not extending anything
+for this in java every top parent class extends Object
+so for A it can be written as
+class A extends Object{}
+even if the extends Object is not written it is by default in java
+
+this is a multilevel inheritance not mutiple only A will extend Object not B
+
+according to use case you can use this
+if you add this(); to your parametrised constructor it will call the default constructor of that class it would be something like
+public B(int n){
+    this();
+    System.out.print..
+}
+in this case no seperate super runs for the parametrised constructor instead only the super from base constructor would run
+
+method overriding
+lets say in class A you had a method show() and config()
+then you create a class B that extends A
+when you do
+B obj = new B();
+then do B.show();
+it would call the method from A
+but if you dont want this you can create a method show() in B
+and this method will override the show from A
+the method is first searched in the same class if it does not find it, it will go and search for it in the parent class
+
+packages
+its better to club similar code and files together in a folder all the files inside the folder will have the same package name as the folder
+if the class you need to access is in the same folder it can be accessed directly but if its in a different folder you need to access it using its package
+
+in every file
+import java.lang.*;
+is already there even if you don't write it
+this package will have all the things we use without importing anything like System String
+
+if you have a folder structure like other/tools/<java files>
+the usual way to import it would be
+import other.tools.*;
+this will import all the files inside tools folder
+if you think doing
+import other.* will do the same thing you are wrong
+this statement will only include the classes in the java files at level other
+
+access modifiers
+public private protected default
+
+if you are in the same package you can access the variables
+if you are in different package you can't access the variables unless you make them public
+
+normally variables will be private and methods will be public
+
+if you make a variable private it cannot be accessed outside the class
+
+if you dont mention anything in front of the variable of method its default and it can be accessed anywhere inside the package but not outside
+
+public can be accessed from anywhere
+private can be accessed only inside class
+default can be accesses only inside package
+protected can be accessed in same package or if you have a protected element in A in some package and in a different package you create a class that extends A you will be able to access the protected element here
+
+try to make your classes public
+we cannot have 2 public classes in a file
+the general idea is there should be only one class per file
+instance variables should be private and the methods most of the time should be public
+if you think there is some method that should be accessed by subclass of other packages use protected
+avoid using default
+
+polymorphism
+compile time  early binding  overloading
+run time      late binding   overriding
+7.java
+
+for creating constants we can use the final keyword
+final int num = 8;
+if you make you class final no other class will be able to extend it
+if the class is not final but you make a method inside the class final then the class can be inherited/extended but you wont be able to override the final method in new class
