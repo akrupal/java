@@ -307,7 +307,48 @@ compile time  early binding  overloading
 run time      late binding   overriding
 7.java
 
+in c++ normally you would create something like this to achieve polymorphism
+class Base{
+    public:
+    virtual void show(){
+        cout<<"Base Show"<<endl;
+    }
+};
+
+class Derived : public Base{
+    public:
+    void show(){
+        cout<<"Derived Show"<<endl;
+    }
+}
+
+int main(){
+    Base* ptr= new Derived();
+    ptr->show();
+    //since it is a base pointer show in Base would be called and it would only show base till virtual is added
+    //once you add virtual to base show it uses Dynamic binding and the call is resolved to method of the actual object which is derived
+}
+
+unlike c++ where you have to explicitly write virtual, in java you get dynamic dispatch automatically for instance methods so its something like the methods are virtual by default(non static, static methods are compile time based) thats why 7.java works
+
+if you are thinking what happens if you use normals objects instead of pointers in C++ it does not work
+int main(){
+    Derived d;
+    //you cant do d=new Derived(); as it returns memory address and d would need to be a pointer
+    Base b = d; // object slicing happes here meaning it would loose the extra Derived data and the dynamic dispatch
+    b.show(); // base show would be called even though its virtual
+}
+
+so in java for run time ploymorphism the type of variable does not matter the type of object is what will matter(obviously they need to be superclass and subclass)
+
 for creating constants we can use the final keyword
 final int num = 8;
 if you make you class final no other class will be able to extend it
 if the class is not final but you make a method inside the class final then the class can be inherited/extended but you wont be able to override the final method in new class
+
+whenever you try to print some object it by default calls toString method from Object
+8.java
+
+upcasting and downcasting 9.java
+
+wrapper classes
