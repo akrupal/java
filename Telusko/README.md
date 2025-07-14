@@ -441,3 +441,52 @@ interfaces can extentd interfaces like classes
 class extends a class
 class implements an interface
 interface extends an interface
+
+enums
+enum Status{
+    Running, Failed, Pending, Success;
+}
+
+Status s = Status.Running;
+System.out.println(s); // Running
+System.out.println(s.ordinal()); // 0 (this is index)
+
+//if you need all the values inside enum
+Status[] ss = Status.values(); //returns an array
+for (Status e:ss){
+    System.out.println(e+":"+e.ordinal());
+}
+
+status is a class and Running, Failed etc are all objects of status
+objects in enums are named constants
+
+we use enums to check some sort of status so what we can do is
+if (s==status.Running)
+    System.out.println("All good");
+else if(s==status.Failed)
+    System.out.println("Try again");
+else if(s==status.Pending)
+    System.out.println("Please wait");
+else
+    System.out.println("Done");
+
+we can also use it in switch as
+switch(s){
+    case Running:
+        System.out.println("All good");
+        break;
+    case Failed:
+        System.out.println("Try again");
+        break;
+    case Pending:
+        System.out.println("Please wait");
+        break;
+    default:
+        System.out.println("Done");
+}
+
+even though we said enum is a class we cannot extend it
+by default any enum class you create extends an enum class in java you can verify that using
+s.getClass().getSuperclass();
+
+enum class 17.java
