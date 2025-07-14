@@ -396,3 +396,48 @@ objects can only be created with concrete classes
 
 inner class
 11.java
+
+anonymous inner class
+usually what we have been doing is if we want to override a class method we'll create another class which extends this class and create a method with same name that overrides it
+but lets say we dont want to do that then we can use anonymous inner class where you can just define this method that you want to change
+12.java
+
+we can also create abstract anonymous inner class such that we define our abstract methods in the anonymous inner class
+normally we cant create an object of abstract class but here since we define it with the inner class it will work
+13.java
+
+use inner class when you know that the new class that would have been created would not be used at more than one place
+the inner class you create is only usable at that place the class is lost then as it has no name(hence anonumous)
+
+interfaces
+lets say we have an abstract classes but it only has abstract methods then we have an option to use interface instead of abstract class
+abstract class A{
+    public abstract void show();
+    public abstract void config();
+}
+interface A{
+    void show();
+    void config();
+}
+interface is not a class
+the methods in interface are public abstract by default so we dont need to mention it
+we cannot instantiate an interface (new A();)
+we can create a reference or type as A obj;
+
+interface is like a set of instructions that need to be implimented
+we can impliment them using classes
+14.java
+you can skip implimentaing some methods in a class that impliments interface but then the class would become abstract
+
+you can create variables inside an interface but they are static and final
+
+when there is a function that needs some class as an input but it might change depending on the requirement what we paas that time you can create an interface make the classes impliment the interface and then the parameter type will be interface and it will accept any class that impliments the interface
+15.java
+
+1 class can implement multiple interfaces the only condition is it should impliment all the methods of all the interfaces
+interfaces can extentd interfaces like classes
+16.java
+
+class extends a class
+class implements an interface
+interface extends an interface
