@@ -352,3 +352,47 @@ whenever you try to print some object it by default calls toString method from O
 upcasting and downcasting 9.java
 
 wrapper classes
+for every primitive type we'll have a class for it
+int -> Integer class
+char -> Charecter class
+double -> Double class
+.
+.
+etc
+
+in some framework if it only supports objects we can use these classes
+java offers the primitive types for performance
+
+int num = 7;
+// Integer num1 = new Integer(8); // old method depricated
+Integer num1 = 8;
+
+Integer num1 = new Integer(num);
+//taking a primitive value and storing it into an object this is called boxing
+Integer num1 = num; //same as above line just the difference being this is called autoboxing
+
+int num2 = num1.intValue(); //this is called unboxing
+int num2 = num1; // here since it happens automatically its called auto-unboxing
+
+String str = "12";
+int num = Integer.parseInt(str);
+System.out.println(num3*2);
+
+abstract keyword
+lets say we have a class in which there is a method that we dont know how to impliment yet so what we can do is just declare it there with the abstract keyword but the thing is the class should also be abstract because only abstract classes can have abstract methods
+now its the responsibility of the class that extends this abstract class to impliment it if we dont it will start giving an error
+you cant create object of an abstract class
+but you can define an object of type abstract class and let it reference to the child object like we did in polymorphism
+
+it is compulsory that an abstract method is written in an abstract class
+but it is not necessary that if a class is abstract it necessarily needs to have abstract methods
+
+in case you have a class that extends an abstract class but is not able to impliment some method in abstract class it will have to be made abstract
+now even the new abstract class cant be created as an object so you will have to create another class which extends the latest abstract class impliment the other abstract method and you will be good
+
+the classes which are not abstract are called concrete classes
+objects can only be created with concrete classes
+10.java
+
+inner class
+11.java
