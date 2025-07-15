@@ -490,3 +490,83 @@ by default any enum class you create extends an enum class in java you can verif
 s.getClass().getSuperclass();
 
 enum class 17.java
+
+annotations
+these are like checks that ensure we write the name of the function correctly
+we'll put @Override in the child class on the method we want to override and the compiler will check for us if the parent class has a method with the same name
+
+types of interface
+Normal
+functional/SAM(Single Abstract Method)
+Marker
+
+avery method in an interface is public abstract by default
+
+(After java8 we also have the option to define methods inside an interface but for now we'll just keep in mind that we can declare methods in an interface)
+
+if an interface has 2 or more methods its called normal methods
+an interface is called functional/SAM when it has only one method
+marker if the interface has no methods i.e. an empty interface
+
+marker interfaces are used when we need to update something to the compiler saying please allow this
+in java we have a concept of serialization which means you can take the values of an object and store tham in the hard drive
+this can be used when we need to recreate the object (ex: save game) using the data from hard drive this process is de-sereialization
+
+by default not every object is not allowed to do serialization and de-serilisation so in order to give the permission we create a class and give permissions using the marker interface
+
+functional interface and lambda expression
+18.java
+
+lambda expression with return value
+19.java
+
+lambda expression will work only with functional interface
+
+exception handling in java
+errors
+1)compile time
+2)run time
+3)logical
+
+compile time errors will be shown by compiler and could wont build unless we fix them
+ligical errors need to be fixed by doing heavy testing
+run time issues need to be handled using exeptions
+
+run time error examples(we try to open a file that does not exist, dividing by 0)
+20.java
+
+usually when the code encounters an error it breaks out without going forward
+but there can be times when even if something is not right you might need to go forward
+when we dont know if something is going to run properly or not we use try catch so that we catch the exception and move forward with the code
+
+heirarchy of classes
+Object
+   |
+   V
+Throwable
+   |
+ -------
+|       |
+V       V
+Error   Exception--------------------------------------------------------
+|                                                                       |
+V                                                                       V
+-------------------------------------                -------------------------------
+|                |                  |                |                |            |
+V                V                  V                V                V            V
+thread error virtual-machine error I/O error      Runtime exception | SQL exception I/O exception ...
+                |                                       Arithmatic  |
+                V                                       Array index |
+              out of memory error                       Null pointer|   
+                                                        .           |
+                                                        .           |
+                                                        .           |
+                                                                    |
+                                                        unchecked   |   checked
+
+for the Runtime exceptions its up to us and the compiler will not force us to write checks hence they are called unchecked
+for any other line where the compiler sees that it can raise other exception the compiler will ask you to write a check and handle the exception
+
+throw 21.java
+
+custom exception 22.java
