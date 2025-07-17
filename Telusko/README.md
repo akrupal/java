@@ -570,3 +570,43 @@ for any other line where the compiler sees that it can raise other exception the
 throw 21.java
 
 custom exception 22.java
+
+d(){
+    try{some critical statement}
+    catch(){}
+}
+e(){
+    try{some critical statement}
+    catch(){}
+}
+c(){
+    d();
+    e();
+}
+in above example we handle try catch in individual functions but this can be made easier using throws
+
+d()throws Exception{}
+e()throws Exception{}
+c(){
+    try{
+        d();
+        e();
+        //in this case both the d and e methods become critical
+    }
+    catch(){}
+}
+
+throws is used when you dont want to handle the exception yourself
+if you dont want to handle the exception even in c you can just keep on going up the ladder and the function calling c will have c in try catch block and c will have throws Exception
+this is called ducking the exception
+23.java
+
+a common interview question println belongs to which class?
+println is a method of printStream class
+so this means we would need to create an object of printStream in order to use this method?
+java already does this for us it creates a statc object out for us from printStream in System class
+
+taking in values from user in java 24.java
+
+try with finally, try with resource 25.java
+
