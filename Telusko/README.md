@@ -610,3 +610,46 @@ taking in values from user in java 24.java
 
 try with finally, try with resource 25.java
 
+threads
+if we want to run some code in threads
+here we run objects in tread and the way to do that is
+start by extending your class with Thread now your class is not an ordinary class its a thread
+To call some method from a thread class we need to call it as obj.start();
+but now that we are calling the method using start even the method name should be start
+but no for every thread whenever you call the .start method it will automatically call the .run method so you can change your method name in thread(object class) to run
+26.java
+
+its the schedulers job to allow a thread to execute
+depending on the number of cores
+lets say you have a 2 core machine meaning you can run 2 threads at a time so the scheduler will schedule it such that only 2 threads will run at a time
+
+now once you see the output fron 26.java you will see the code is running in parallel but lets say we want something like one hi followed by a hello
+you could
+1) give priority to a thread
+obj1.setPriority(5);//this number can be anything between 1-10(lowest to highest priority)
+obj1.setPriority(Thread.MAX_PRIORITY); //setting this would mean this tread would be executed first
+but you will see this does not give very good result and its totally up to the scheduler depending upon the threads its already running it could also give priotiry according to running time
+2) after every print statement we could add
+try{
+    thread.sleep(10);//time in milliseconds
+}
+catch(InturruptedException e){
+    e.printStackTrace();
+}
+but even with this there is a chance they may not be alternate
+
+other methods of creating thread
+lets say we have a class that needs to extend some other class and then it needs to be a thread too but multiple inheritance is not possible in java
+class A{}
+class B extends A,Thread{}//this is not possible
+
+so now we can use Runnable interface
+27.java
+
+race condition
+happens if 2 threads try to access the same variable at the same time and try to change the value we might not get the desired value
+when you fire threads you can wait for them to complete their execution and return to the main thread using .join() on the thread
+but this still does not solve the problem of same time access
+to fix that we can add synchronized to the method being accessed by threads
+synchronized ensures that the method is being accessed by one thread at a time
+28.java
