@@ -653,3 +653,44 @@ but this still does not solve the problem of same time access
 to fix that we can add synchronized to the method being accessed by threads
 synchronized ensures that the method is being accessed by one thread at a time
 28.java
+
+thread states
+
+(when you create 
+a new thread)                 .notify() //when this method is called first it will go to scheduler not directly to Runnable
+New --------------> Runnable <----- Waiting
+        .start()       |          /
+                       |.run()   /| .sleep()
+                       |        /   .wait()
+                       V       /
+                      Running --------------> Dead
+                                .stop()
+                                //stop is depricated now dont use it anymore
+
+even if the thread is in Runnable using stop will send it to dead
+
+
+Collection API - concept
+Collection     - interface and some classes impliment this
+Collections    - class 
+
+Iterable
+Collection
+    List
+        ArrayList
+        LinkedList
+    Queue
+        DeQueue
+    Set
+        HashSet
+        LinkedHashSet
+
+this can be followed as a parent to child relation
+other than these there are also map, map is not an implementation or does not extend collection interface but is a part of collection API
+
+list 29.java
+
+list supported repeated values but if you dont want repeated values use set
+30.java
+
+map 31.java
