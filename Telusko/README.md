@@ -694,3 +694,29 @@ list supported repeated values but if you dont want repeated values use set
 30.java
 
 map 31.java
+
+comparator and comparable 32.java
+
+forEach and stream 33.java
+
+afther java 10 versions we can use the keyword var, the value needs to be specified and assigned so that the compiler can inference the data type
+and its allowed only with local variables inside a method
+
+class Demo{
+    //var num = 10;//not allowed here
+    public static void main(string a[]){
+        int a=9;
+        var b=8;
+        String var = "Ajinkya";//it can also be used as variable name
+
+        int c;
+        //var d;//this cant be done it needs to be assigned some value
+
+        int nums[] = new int[10];
+        var nums = new int[10];//the bracket is not needed with var
+        //if you put it it will give an error
+
+        //can use var for creating class instances
+        
+    }
+}
