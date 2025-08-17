@@ -716,7 +716,18 @@ class Demo{
         var nums = new int[10];//the bracket is not needed with var
         //if you put it it will give an error
 
-        //can use var for creating class instances
+        //can use var for creating class instances as
+        var obj = new Alien();
         
     }
 }
+
+when you create an abstract class the idea is usually that it will be inherited by some other concrete class which will implement the methods from abstract class
+with final the class cannot be inherited
+
+what if we want something in between?
+lets say we want inheritance but not every class can inherit this class
+here we take the help of sealed classes
+34.java
+
+record 35.java
